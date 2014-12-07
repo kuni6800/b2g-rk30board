@@ -1,0 +1,25 @@
+From 818ddc0e0c6e169fa78ee4e863a88f0fe9c28191 Mon Sep 17 00:00:00 2001
+From: Kunihiko Hayashi <hayashi.kunihiko@gmail.com>
+Date: Fri, 21 Mar 2014 20:28:18 +0900
+Subject: [PATCH] temporarily disabled USE_OPENGL_RENDERER because the method
+ how to build libRS isn't found.
+
+---
+ libs/hwui/Android.mk |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libs/hwui/Android.mk b/libs/hwui/Android.mk
+index a630ea1..2cddba7 100644
+--- a/libs/hwui/Android.mk
++++ b/libs/hwui/Android.mk
+@@ -3,6 +3,7 @@ include $(CLEAR_VARS)
+ 
+ # Only build libhwui when USE_OPENGL_RENDERER is
+ # defined in the current device/board configuration
++USE_OPENGL_RENDERER := false //@@@
+ ifeq ($(USE_OPENGL_RENDERER),true)
+ 	LOCAL_SRC_FILES:= \
+ 		utils/Blur.cpp \
+-- 
+1.7.9.5
+

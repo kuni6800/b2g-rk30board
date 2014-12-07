@@ -1,0 +1,48 @@
+From 5e2b7af640ef2f785d10cf757bf15d8de79a9f55 Mon Sep 17 00:00:00 2001
+From: Kunihiko Hayashi <hayashi.kunihiko@gmail.com>
+Date: Sun, 15 Jun 2014 02:31:40 +0900
+Subject: [PATCH] changed default settings
+
+---
+ build/config/common-settings.json |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/build/config/common-settings.json b/build/config/common-settings.json
+index 433a15c..20380f9 100644
+--- a/build/config/common-settings.json
++++ b/build/config/common-settings.json
+@@ -95,7 +95,7 @@
+    "lockscreen.passcode-lock.timeout": 0,
+    "lockscreen.passcode-lock.enabled": false,
+    "lockscreen.notifications-preview.enabled": true,
+-   "lockscreen.enabled": true,
++   "lockscreen.enabled": false,
+    "lockscreen.locked": true,
+    "lockscreen.unlock-sound.enabled": false,
+    "mail.sent-sound.enabled": true,
+@@ -164,9 +164,9 @@
+    "rocketbar.enabled": false,
+    "screen.automatic-brightness": false,
+    "screen.brightness": 1,
+-   "screen.timeout": 60,
++   "screen.timeout": 0,
+    "software-button.enabled": false,
+-   "homegesture.enabled": false,
++   "homegesture.enabled": true,
+    "edgesgesture.enabled": false,
+    "continuous-transition.enabled": false,
+    "support.onlinesupport.title": "",
+@@ -192,8 +192,8 @@
+    "tethering.wifi.connectedClients": 0,
+    "tethering.usb.connectedClients": 0,
+    "time.clock.automatic-update.enabled": true,
+-   "time.timezone.automatic-update.enabled": true,
+-   "time.timezone": null,
++   "time.timezone.automatic-update.enabled": false,
++   "time.timezone": 440,
+    "ums.enabled": false,
+    "ums.mode": 0,
+    "ums.status": 0,
+-- 
+1.7.9.5
+

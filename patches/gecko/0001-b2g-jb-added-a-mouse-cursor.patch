@@ -1,0 +1,56 @@
+From ffc977e85cb717980d3199eea6f30c5bb0632e4e Mon Sep 17 00:00:00 2001
+From: Kunihiko Hayashi <hayashi.kunihiko@gmail.com>
+Date: Mon, 17 Feb 2014 23:51:37 +0900
+Subject: [PATCH 1/2] b2g-jb: added a mouse cursor.
+
+---
+ b2g/chrome/content/shell.html |    1 +
+ b2g/chrome/content/shell.js   |    7 +++++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/b2g/chrome/content/shell.html b/b2g/chrome/content/shell.html
+index a6340fa..2a0ce4b 100644
+--- a/b2g/chrome/content/shell.html
++++ b/b2g/chrome/content/shell.html
+@@ -39,5 +39,6 @@
+     <h1 id="placeholder">wtf mac os!</h1>
+ #endif
+     <!-- The html:iframe containing the UI is created here. -->
++    <div id="cursorbox" style="border: 3px solid #FF8000; position: fixed; padding-left: 3px; padding-top: 3px;"/>
+   </body>
+ </html>
+diff --git a/b2g/chrome/content/shell.js b/b2g/chrome/content/shell.js
+index d1bfd11..1c0476b 100644
+--- a/b2g/chrome/content/shell.js
++++ b/b2g/chrome/content/shell.js
+@@ -334,6 +334,7 @@ var shell = {
+     window.addEventListener('MozAfterPaint', this);
+     window.addEventListener('sizemodechange', this);
+     window.addEventListener('unload', this);
++    window.addEventListener('mousemove', this);
+     this.contentBrowser.addEventListener('mozbrowserloadstart', this, true);
+ 
+     CustomEventManager.init();
+@@ -357,6 +358,7 @@ var shell = {
+   },
+ 
+   stop: function shell_stop() {
++    window.removeEventListener('mousemove', this, true);
+     window.removeEventListener('unload', this);
+     window.removeEventListener('keydown', this, true);
+     window.removeEventListener('keypress', this, true);
+@@ -560,6 +562,11 @@ var shell = {
+       case 'unload':
+         this.stop();
+         break;
++      case 'mousemove':
++        var cbox = document.getElementById("cursorbox");
++        cbox.style.left = (evt.screenX + 5) + "px";
++        cbox.style.top = (evt.screenY + 5) + "px";
++        break;
+     }
+   },
+ 
+-- 
+1.7.9.5
+

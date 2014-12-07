@@ -1,0 +1,46 @@
+From 2b50f51b9b96782b5e049f198b11bf74bf2183aa Mon Sep 17 00:00:00 2001
+From: Kunihiko Hayashi <hayashi.kunihiko@gmail.com>
+Date: Tue, 25 Feb 2014 23:31:50 +0900
+Subject: [PATCH] add an old API of CallStack::dump() for compatibility.
+
+  - CallStack::dump(const char *) is used by alsa.default.so.
+---
+ include/utils/CallStack.h |    4 ++++
+ libs/utils/CallStack.cpp  |    6 ++++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/include/utils/CallStack.h b/include/utils/CallStack.h
+index 61dc832..91eca9b 100644
+--- a/include/utils/CallStack.h
++++ b/include/utils/CallStack.h
+@@ -57,6 +57,10 @@ public:
+ 
+     // Dump a stack trace to the log using the supplied logtag
+     void dump(const char* logtag, const char* prefix = 0) const;
++#if 1//@@@
++    // Dump a stack trace to the log
++    void Dump(const char* prefix = 0) const;
++#endif//@@@
+ 
+     // Return a string (possibly very long) containing the complete stack trace
+     String8 toString(const char* prefix = 0) const;
+diff --git a/libs/utils/CallStack.cpp b/libs/utils/CallStack.cpp
+index e60f5d8..3ac9861 100644
+--- a/libs/utils/CallStack.cpp
++++ b/libs/utils/CallStack.cpp
+@@ -116,6 +116,12 @@ void CallStack::dump(const char* logtag, const char* prefix) const {
+     free_backtrace_symbols(symbols, mCount);
+ }
+ 
++#if 1//@@@
++void CallStack::Dump(const char* prefix) const {
++    dump(LOG_TAG,prefix);
++}
++#endif//@@@
++
+ String8 CallStack::toString(const char* prefix) const {
+     String8 str;
+     backtrace_symbol_t symbols[mCount];
+-- 
+1.7.9.5
+

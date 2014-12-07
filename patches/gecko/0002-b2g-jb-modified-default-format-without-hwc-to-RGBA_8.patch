@@ -1,0 +1,29 @@
+From 8016b5b2402a33f542251bc00a239fb0736163d7 Mon Sep 17 00:00:00 2001
+From: Kunihiko Hayashi <hayashi.kunihiko@gmail.com>
+Date: Wed, 19 Feb 2014 01:06:03 +0900
+Subject: [PATCH 2/2] b2g-jb: modified default format without hwc to
+ RGBA_8888.
+
+---
+ widget/gonk/libdisplay/GonkDisplayJB.cpp |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/widget/gonk/libdisplay/GonkDisplayJB.cpp b/widget/gonk/libdisplay/GonkDisplayJB.cpp
+index 68ab840..d43656b 100644
+--- a/widget/gonk/libdisplay/GonkDisplayJB.cpp
++++ b/widget/gonk/libdisplay/GonkDisplayJB.cpp
+@@ -59,7 +59,11 @@ GonkDisplayJB::GonkDisplayJB()
+ 	 xdpi = mFBDevice->xdpi;
+         /* The emulator actually reports RGBA_8888, but EGL doesn't return
+          * any matching configuration. We force RGBX here to fix it. */
++#if 0 //@@@
+         surfaceformat = HAL_PIXEL_FORMAT_RGBX_8888;
++#else //@@@
++        surfaceformat = HAL_PIXEL_FORMAT_RGBA_8888;
++#endif //@@@
+     }
+ 
+     err = hw_get_module(HWC_HARDWARE_MODULE_ID, &mModule);
+-- 
+1.7.9.5
+
