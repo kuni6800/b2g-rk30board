@@ -1,0 +1,2 @@
+/devices/platform/usb20_host/usb2  /mnt/usb_storage  vfat  defaults  voldmanaged=usb:auto
+

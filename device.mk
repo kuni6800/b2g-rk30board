@@ -15,7 +15,8 @@
 #
 
 PRODUCT_COPY_FILES := \
-	device/rockchip/rk30board/volume.cfg:system/etc/volume.cfg
+	device/rockchip/rk30board/volume.cfg:system/etc/volume.cfg \
+	device/rockchip/rk30board/fstab.rk30board:root/fstab.rk30board
 
 PRODUCT_PROPERTY_OVERRIDES := \
 	wifi.interface=wlan0
